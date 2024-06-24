@@ -9,8 +9,12 @@ import {
   VStack,
   Heading,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
+
+const MotionBox = motion(Box);
+const MotionButton = motion(Button);
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -31,11 +35,24 @@ const Register = () => {
   };
 
   return (
-    <Box w="400px" mx="auto" mt="100px">
-      <VStack spacing="4">
-        <Heading as="h2">Register</Heading>
-        <form onSubmit={handleSubmit}>
-          <FormControl>
+    <MotionBox
+      w={{ base: "90%", md: "400px" }}
+      mx="auto"
+      mt="100px"
+      p="6"
+      borderWidth="1px"
+      borderRadius="lg"
+      boxShadow="lg"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <VStack spacing="6">
+        <Heading as="h2" size="lg" textAlign="center">
+          Register
+        </Heading>
+        <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+          <FormControl mb="4">
             <FormLabel>Username</FormLabel>
             <Input
               type="text"
@@ -44,7 +61,7 @@ const Register = () => {
               required
             />
           </FormControl>
-          <FormControl>
+          <FormControl mb="4">
             <FormLabel>Email</FormLabel>
             <Input
               type="email"
@@ -53,7 +70,7 @@ const Register = () => {
               required
             />
           </FormControl>
-          <FormControl>
+          <FormControl mb="4">
             <FormLabel>Password</FormLabel>
             <Input
               type="password"
@@ -62,12 +79,18 @@ const Register = () => {
               required
             />
           </FormControl>
-          <Button type="submit" colorScheme="teal" width="full">
+          <MotionButton
+            type="submit"
+            colorScheme="teal"
+            width="full"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             Register
-          </Button>
+          </MotionButton>
         </form>
       </VStack>
-    </Box>
+    </MotionBox>
   );
 };
 

@@ -8,11 +8,14 @@ import {
   Text,
   HStack,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 import api from "../api";
+
+const MotionBox = motion(Box);
 
 const ChatRoom = () => {
   const { user } = useAuth();
@@ -74,57 +77,71 @@ const ChatRoom = () => {
   console.log("messages", messages);
 
   return (
-    <Box w="100%" p="4">
-      <Heading as="h2" size="lg" mb="4">
+    <Box w="100%" p="4" backgroundColor="gray.900">
+      <Heading
+        as="h2"
+        size="lg"
+        mb="4"
+        textColor="white"
+        backgroundColor="gray.900"
+      >
         Chat Room: {room}
       </Heading>
       <Box
         border="1px"
-        borderColor="gray.200"
+        borderColor="gray.800"
         p="4"
         mb="4"
-        h="400px"
+        h={{ base: "300px", md: "400px" }}
         overflowY="scroll"
       >
         <VStack spacing="4">
           {messages.map((msg, index) => (
-            <HStack
+            <MotionBox
               key={index}
               w="100%"
-              justify={
-                msg.user.username || msg.user === user.username
-                  ? "flex-end"
-                  : "flex-start"
-              }
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              <Box
-                bg={
+              <HStack
+                justify={
                   msg.user.username || msg.user === user.username
-                    ? "teal.500"
-                    : "gray.200"
+                    ? "flex-end"
+                    : "flex-start"
                 }
-                color={
-                  msg.user.username || msg.user === user.username
-                    ? "white"
-                    : "black"
-                }
-                p="2"
-                borderRadius="md"
               >
-                <Text>{msg.text}</Text>
-                <Text fontSize="xs">{msg.user.username || msg.user}</Text>
-              </Box>
-            </HStack>
+                <Box
+                  bg={
+                    msg.user.username || msg.user === user.username
+                      ? "teal.500"
+                      : "green.200"
+                  }
+                  color={
+                    msg.user.username || msg.user === user.username
+                      ? "white"
+                      : "black"
+                  }
+                  p="2"
+                  borderRadius="md"
+                  maxW="80%"
+                >
+                  <Text>{msg.text}</Text>
+                  <Text fontSize="xs">{msg.user.username || msg.user}</Text>
+                </Box>
+              </HStack>
+            </MotionBox>
           ))}
         </VStack>
       </Box>
       <form onSubmit={sendMessage}>
-        <HStack spacing="4">
+        <HStack spacing="4" w="100%">
           <Input
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Type a message..."
+            flex="1"
           />
           <Button type="submit" colorScheme="teal">
             Send

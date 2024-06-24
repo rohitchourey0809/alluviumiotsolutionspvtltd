@@ -8,8 +8,12 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import axios from "axios";
 import { baseURL } from "../api";
+
+const MotionBox = motion(Box);
+const MotionButton = motion(Button);
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,10 +31,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${baseURL}/api/auth/login`,
-        formData
-      );
+      const response = await axios.post(`${baseURL}/api/auth/login`, formData);
       localStorage.setItem("token", response.data.token);
       toast({
         title: "Login successful",
@@ -52,11 +53,22 @@ const Login = () => {
   };
 
   return (
-    <Box w="100%" p="4">
-      <Heading as="h2" size="lg" mb="4">
+    <MotionBox
+      w={{ base: "90%", md: "400px" }}
+      mx="auto"
+      mt="100px"
+      p="6"
+      borderWidth="1px"
+      borderRadius="lg"
+      boxShadow="lg"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Heading as="h2" size="lg" mb="6" textAlign="center">
         Login
       </Heading>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
         <VStack spacing="4">
           <Input
             type="email"
@@ -74,12 +86,18 @@ const Login = () => {
             placeholder="Password"
             required
           />
-          <Button type="submit" colorScheme="teal">
+          <MotionButton
+            type="submit"
+            colorScheme="teal"
+            width="full"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             Login
-          </Button>
+          </MotionButton>
         </VStack>
       </form>
-    </Box>
+    </MotionBox>
   );
 };
 

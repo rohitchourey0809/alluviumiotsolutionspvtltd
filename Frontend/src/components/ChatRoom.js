@@ -127,7 +127,9 @@ const ChatRoom = () => {
                   maxW="80%"
                 >
                   <Text>{msg.text}</Text>
-                  <Text fontSize="xs">{msg.user.username || msg.user}</Text>
+                  <Text fontSize="xs" fontWeight="bold" color="blue">
+                    {msg.user.username || msg.user}
+                  </Text>
                 </Box>
               </HStack>
             </MotionBox>
@@ -142,6 +144,7 @@ const ChatRoom = () => {
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Type a message..."
             flex="1"
+            textColor="white"
           />
           <Button type="submit" colorScheme="teal">
             Send

@@ -64,6 +64,8 @@ const Login = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      backgroundColor="gray.900"
+      textColor="white"
     >
       <Heading as="h2" size="lg" mb="6" textAlign="center">
         Login

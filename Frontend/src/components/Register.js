@@ -46,6 +46,8 @@ const Register = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      backgroundColor="gray.900"
+      textColor="white"
     >
       <VStack spacing="6">
         <Heading as="h2" size="lg" textAlign="center">

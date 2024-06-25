@@ -11,9 +11,11 @@ const ChatPage = () => {
   console.log("user", user);
 
   return (
-    <Box p="4">
-      <VStack spacing="4" backgroundColor="gray.900">
-        <Heading as="h1" textColor="white">Welcome, {user?.username}</Heading>
+    <Box p="4" backgroundColor="gray.900">
+      <VStack spacing="4" >
+        <Heading as="h1" textColor="white">
+          Welcome, {user?.username}
+        </Heading>
         <Button colorScheme="red" onClick={logout}>
           Logout
         </Button>

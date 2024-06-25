@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <Box textAlign="center" py="10">
+    <Box
+      textAlign="center"
+      py="10"
+      backgroundColor="gray.900"
+      textColor="white"
+    >
       <VStack spacing="6">
         <Heading as="h1" size="2xl">
           Welcome to the Chat App

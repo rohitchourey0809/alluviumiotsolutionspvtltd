@@ -2,6 +2,8 @@
 
 [Click to see video](https://go.screenpal.com/watch/cZ1TiaV8XVo)
 
+https://go.screenpal.com/watch/cZ1TiaV8XVo
+
 # Chat Application Backend
 
 This is the backend server for the chat application, built with Node.js, Express, and Socket.io. It handles user authentication, message storage, and real-time message broadcasting.
@@ -33,7 +35,7 @@ This is the backend server for the chat application, built with Node.js, Express
 
 ### Installation
 
-1. Clone the repository:
+   Clone the repository:
 
    ```
    git clone https://github.com/rohitchourey0809/Backend-Alluvuim
@@ -43,7 +45,7 @@ This is the backend server for the chat application, built with Node.js, Express
 
 
 
-```markdown
+
 # Chat Application Frontend
 
 This is the frontend of the chat application, built with React and Chakra UI. It allows users to register, login, and chat in real-time with other users in different chat rooms.
@@ -73,7 +75,7 @@ This is the frontend of the chat application, built with React and Chakra UI. It
 
 ### Installation
 
-1. Clone the repository:
+  Clone the repository:
 
    ```
    git clone https://github.com/rohitchourey0809/Frontend-Alluvuim
